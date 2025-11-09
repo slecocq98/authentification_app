@@ -1,8 +1,10 @@
 import axios from 'axios';
+import Constants from 'expo-constants';
 
-const API_KEY = 'AIzaSyDy7j5EARlKxgANR3dcG4ZYYBDmU8QUn88';
+const API_KEY = Constants.expoConfig?.extra?.firebaseApiKey;
 
 async function authenticate(email, password, mode) {
+    console.log(API_KEY);
     const url = `https://identitytoolkit.googleapis.com/v1/accounts:${mode}?key=${API_KEY}`;
     const response = await axios.post(url, {
         email: email,
